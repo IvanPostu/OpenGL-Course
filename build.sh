@@ -11,37 +11,54 @@ cyan=`tput setaf 6`
 white=`tput setaf 7`
 reset=`tput sgr0`
 
-flag=$1
+flag1=$1
 
-if [ "$flag" = '--init' ]; then
+if [ "$flag1" = '--dependency-resolve' ]; then
+
+  # git subtree add --prefix=external/glfw glfw master --squash
+  # git subtree pull --prefix=external/glfw glfw master --squash
+
+  exit 0
+fi
+
+if [ "$flag1" = '--init' ]; then
 
   echo  "${cyan}Initialize build dir. for project using CMakeLists.${reset}"
+
+  # sudo apt-get install libglu1-mesa-dev  
+  # sudo apt-get install freeglut3-dev
+  # sudo apt-get install mesa-common-dev
+  # sudo apt-get install libxrandr-dev
+  # sudo apt-get install libxinerama-dev
+  # sudo apt-get install libxcursor-dev
+  # sudo apt-get install libxi-dev
+
   rm -rf ./build
   mkdir -p ./build
   cd ./build
   cmake ..
-  exit 0
 
+  exit 0
 fi
 
-if [ "$flag" = '--release' ]; then
+if [ "$flag1" = '--release' ]; then
 
   echo  "${cyan}Build project in RELEASE mode.${reset}"
   cd ./build
   # cmake --build . --config Release
   cmake -DCMAKE_BUILD_TYPE=Release .
   make
-  exit 0
 
+  exit 0
 fi
 
-if [ "$flag" = '--debug' ]; then
+if [ "$flag1" = '--debug' ]; then
 
   echo  "${cyan}Build project in DEBUG mode.${reset}"
   cd ./build
   cmake -DCMAKE_BUILD_TYPE=Debug .
   make
+
   exit 0
-  
 fi
 
