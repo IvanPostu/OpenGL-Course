@@ -1,0 +1,83 @@
+{
+  "eslint.workingDirectories": ["./frontend", "./worker", "./crawler"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/frontend/src"
+  },
+  "files.exclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+    // "**/build/*/**": true
+  },
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true,
+    "**/build/*/**": true
+  },
+  "editor.rulers": [100],
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wrappingIndent": "same",
+  "editor.wordWrapColumn": 100,
+  "editor.formatOnSave": false,
+  "breadcrumbs.enabled": true,
+  "terminal.integrated.fontFamily": "Fira Code Medium",
+  "terminal.integrated.fontSize": 10,
+  "editor.minimap.scale": 3,
+  "editor.minimap.enabled": false,
+  "editor.codeLens": false,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorStyle": "line",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "Fira Code Medium",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.letterSpacing": 0.2,
+  "editor.lineHeight": 16,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "search.showLineNumbers": true,
+  "workbench.colorCustomizations": {
+    "editorWarning.foreground": "#ff9100",
+    "editorError.foreground": "#ff0000",
+    "editorError.border": "#b80000",
+    
+    "statusBar.background" : "#4d4b57",
+    "statusBar.noFolderBackground" : "#212121",
+    "statusBar.debuggingBackground": "#263238"
+  },
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "foreground": "#416863"
+        }
+      },
+      {
+        "scope": "string.quoted.single",
+        "settings": {
+          "foreground": "#229977"
+        }
+      },
+      {
+        "scope": "string.quoted.double",
+        "settings": {
+          "foreground": "#229977"
+        }
+      }
+    ]
+  },
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "files.associations": {
+    "iostream": "cpp"
+  },
+  "cmake.configureOnOpen": true
+}
