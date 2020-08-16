@@ -77,7 +77,8 @@
   },
   "java.configuration.updateBuildConfiguration": "interactive",
   "files.associations": {
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "ostream": "cpp"
   },
   "cmake.configureOnOpen": true
 }
