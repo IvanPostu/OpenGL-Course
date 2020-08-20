@@ -21,9 +21,9 @@ IF "%flag1%"=="--init" (
 )
 
 IF "%flag1%"=="--debug" (
-
   cd build
-  cmake --build . --config Debug
+  cmake --build .
+  REM cmake -DVARIABLE1=444 --build .
 
 )
 
