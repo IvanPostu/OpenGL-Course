@@ -14,22 +14,22 @@ GLfloat colors[] = {
     0.0f, 0.0f, 1.0f};
 
 const char *vertex_shader = ""
-                            "#version 300\n"
-                            "layout(location = 0) in vec3 vertex_position;"
-                            "layout(location = 1) in vec3 vertex_color;"
-                            "out vec3 color;"
-                            "void main() {"
-                            "   color = vertex_color;"
-                            "   gl_Position = vec4(vertex_position, 1.0);"
-                            "}";
+  "#version 460\n"
+  "layout(location = 0) in vec3 vertex_position;"
+  "layout(location = 1) in vec3 vertex_color;"
+  "out vec3 color;"
+  "void main() {"
+  "   color = vertex_color;"
+  "   gl_Position = vec4(vertex_position, 1.0);"
+  "}";
 
 const char *fragment_shader = ""
-                              "#version 300\n"
-                              "in vec3 color;"
-                              "out vec4 frag_color;"
-                              "void main() {"
-                              "   frag_color = vec4(color, 1.0);"
-                              "}";
+  "#version 460\n"
+  "in vec3 color;"
+  "out vec4 frag_color;"
+  "void main() {"
+  "   frag_color = vec4(color, 1.0);"
+  "}";
 
 int g_windowSizeX = 640;
 int g_windowSizeY = 480;
@@ -59,9 +59,9 @@ int main(int argc, char **argv)
     return EXIT_FAILURE;
   }
 
-  //glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-  //glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-  //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   GLFWwindow *pWindow = glfwCreateWindow(g_windowSizeX, g_windowSizeY, "OpenGL Course", NULL, NULL);
   if (!pWindow)
@@ -85,7 +85,7 @@ int main(int argc, char **argv)
   cout << "Renderer: " << glGetString(GL_RENDERER) << endl;
   cout << "OpenGL version: " << glGetString(GL_VERSION) << endl;
 
-  glClearColor(.5f, .2f, 0, 1);
+  glClearColor(.5f, .2f, .5f, 1);
 
   GLuint vs = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vs, 1, &vertex_shader, nullptr);

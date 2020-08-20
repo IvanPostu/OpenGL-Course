@@ -1,8 +1,9 @@
 
 cmake_minimum_required(VERSION 3.13.4 FATAL_ERROR)
 
-set(CMAKE_C_COMPILER /usr/bin/gcc)
-set(CMAKE_CXX_COMPILER /usr/bin/g++)
+# set(CMAKE_C_COMPILER /usr/bin/gcc)
+# set(CMAKE_CXX_COMPILER /usr/bin/g++)
+# set(CMAKE_BUILD_TYPE Debug)
 
 set(PROJECT_NAME OpenGLCourse)
 
