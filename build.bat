@@ -23,13 +23,13 @@ IF "%flag1%"=="--init" (
 IF "%flag1%"=="--debug" (
 
   cd build
-  cmake --build . --config Debug --target all .
+  cmake --build . --config Debug
 
 )
 
 IF "%flag1%"=="--release" (
 
   cd build
-  cmake --build . --config Release --target all .
+  cmake --build . --config Release
 
 )

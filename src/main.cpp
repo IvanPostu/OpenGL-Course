@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cstdlib>
 
+#include "Renderer/ShaderProgram.h"
+
 GLfloat point[] = {
     0.0f, 0.5f, 0.0f,
     0.5f, -0.5f, 0.0f,
@@ -87,21 +89,13 @@ int main(int argc, char **argv)
 
   glClearColor(.5f, .2f, .5f, 1);
 
-  GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-  glShaderSource(vs, 1, &vertex_shader, nullptr);
-  glCompileShader(vs);
-
-  GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-  glShaderSource(fs, 1, &fragment_shader, nullptr);
-  glCompileShader(fs);
-
-  GLuint shader_program = glCreateProgram();
-  glAttachShader(shader_program, vs);
-  glAttachShader(shader_program, fs);
-  glLinkProgram(shader_program);
-
-  glDeleteShader(vs);
-  glDeleteShader(fs);
+  string vertexShader = string(vertex_shader);
+  string fragmentShader = string(fragment_shader);
+  Renderer::ShaderProgram shaderProgram(vertexShader, fragmentShader);
+  if(!shaderProgram.isCompiled()){
+    cerr << "Can't create shader program!"<<endl;
+    return -1;
+  }
 
   GLuint points_vbo = 0;
   glGenBuffers(1, &points_vbo);
@@ -129,7 +123,8 @@ int main(int argc, char **argv)
   {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glUseProgram(shader_program);
+    // glUseProgram(shader_program);
+    shaderProgram.use();
     glBindVertexArray(vao);
     glDrawArrays(GL_TRIANGLES, 0, 3);
 

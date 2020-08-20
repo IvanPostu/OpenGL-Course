@@ -1,15 +1,15 @@
 
 cmake_minimum_required(VERSION 3.13.4 FATAL_ERROR)
 
-# set(CMAKE_C_COMPILER /usr/bin/gcc)
-# set(CMAKE_CXX_COMPILER /usr/bin/g++)
-# set(CMAKE_BUILD_TYPE Debug)
-
 set(PROJECT_NAME OpenGLCourse)
 
 project(${PROJECT_NAME})
 
-add_executable(${PROJECT_NAME} src/main.cpp)
+set(CMAKE_CXX_STANDARD 17)
+add_executable(${PROJECT_NAME} src/main.cpp 
+  src/Renderer/ShaderProgram.cpp 
+  src/Renderer/ShaderProgram.cpp 
+  )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
