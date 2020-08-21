@@ -73,7 +73,7 @@ std::shared_ptr<Renderer::ShaderProgram> ResourceManager::getShaderProgram(
 {
   using namespace std;
 
-  ShaderProgramMap::const_iterator it = m_shaderPrograms.find(shaderName);
+  ShaderProgramsMap::const_iterator it = m_shaderPrograms.find(shaderName);
   if (it != m_shaderPrograms.end())
   {
     return it->second;
@@ -90,6 +90,7 @@ std::shared_ptr<Renderer::Texture2D> ResourceManager::loadTexture(const std::str
   int width = 0;
   int height = 0;
 
+  stbi_set_flip_vertically_on_load(true);
   unsigned char *pixels = stbi_load(std::string(m_path + "/" + texturePath).c_str(),
                                     &width, &height, &channels, 0);
 

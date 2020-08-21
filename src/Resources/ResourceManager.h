@@ -34,8 +34,8 @@ public:
 private:
   std::string getFileString(const std::string &relativePath) const;
 
-  typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramMap;
-  ShaderProgramMap m_shaderPrograms;
+  typedef std::map<const std::string, std::shared_ptr<Renderer::ShaderProgram>> ShaderProgramsMap;
+  ShaderProgramsMap m_shaderPrograms;
 
   typedef std::map<const std::string, std::shared_ptr<Renderer::Texture2D>> TexturesMap;
   TexturesMap m_textures;
