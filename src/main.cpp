@@ -2,6 +2,8 @@
 #include <GLFW/glfw3.h>
 
 #include <glm/vec2.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <iostream>
 #include <cstdlib>
@@ -11,9 +13,9 @@
 #include "Renderer/Texture2D.h"
 
 GLfloat point[] = {
-    0.0f, 0.5f, 0.0f,
-    0.5f, -0.5f, 0.0f,
-    -0.5f, -0.5f, 0.0f};
+    0.0f, 50.f, 0.0f,
+    50.f, -50.f, 0.0f,
+    -50.f, -50.f, 0.0f};
 
 GLfloat colors[] = {
     1.0f, 0.0f, 0.0f,
@@ -25,27 +27,7 @@ GLfloat texCoord[] = {
     1.0f, 0.0f,
     0.0f, 0.0f};
 
-const char *vertex_shader = ""
-  "#version 460\n"
-  "layout(location = 0) in vec3 vertex_position;"
-  "layout(location = 1) in vec3 vertex_color;"
-  "out vec3 color;"
-  "void main() {"
-  "   color = vertex_color;"
-  "   gl_Position = vec4(vertex_position, 1.0);"
-  "}";
-
-const char *fragment_shader = ""
-  "#version 460\n"
-  "in vec3 color;"
-  "out vec4 frag_color;"
-  "void main() {"
-  "   frag_color = vec4(color, 1.0);"
-  "}";
-
 glm::ivec2 g_windowSize(640, 480);
-// int g_windowSizeX = 640;
-// int g_windowSizeY = 480;
 
 void glfwWindowResizeCallback(GLFWwindow *pWindow, int width, int height)
 {
@@ -65,7 +47,6 @@ void glfwKeyCallback(GLFWwindow *pWindow, int key, int scancode, int action, int
 int main(int argc, char **argv)
 {
   using namespace std;
-  
 
   if (!glfwInit())
   {
@@ -77,9 +58,9 @@ int main(int argc, char **argv)
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  GLFWwindow *pWindow = glfwCreateWindow(g_windowSize.x, g_windowSize.y, 
-    "OpenGL Course", NULL, NULL);
-    
+  GLFWwindow *pWindow = glfwCreateWindow(g_windowSize.x, g_windowSize.y,
+                                         "OpenGL Course", NULL, NULL);
+
   if (!pWindow)
   {
     cerr << "pWindow initialize error!" << endl;
@@ -106,11 +87,12 @@ int main(int argc, char **argv)
   {
 
     ResourceManager resourceManager(argv[0]);
-    auto pDefaultShaderProgram = resourceManager.loadShaders("DefaultShader", 
-      "res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
-    if(!pDefaultShaderProgram)
+    auto pDefaultShaderProgram = resourceManager.loadShaders("DefaultShader",
+                                                             "res/shaders/vertex.glsl", "res/shaders/fragment.glsl");
+    if (!pDefaultShaderProgram)
     {
-      cerr << "Can't create shader program: " << "DefaultShader" <<endl;
+      cerr << "Can't create shader program: "
+           << "DefaultShader" << endl;
       return -1;
     }
 
@@ -150,22 +132,34 @@ int main(int argc, char **argv)
     pDefaultShaderProgram->use();
     pDefaultShaderProgram->setInt("tex", 0);
 
+    glm::mat4 modelMatrix_1 = glm::mat4(1.f);
+    modelMatrix_1 = glm::translate(modelMatrix_1, glm::vec3(100.f, 50.f, 0));
+
+    glm::mat4 modelMatrix_2 = glm::mat4(1.f);
+    modelMatrix_2 = glm::translate(modelMatrix_2, glm::vec3(590.f, 50.f, 0));
+
+    glm::mat4 projectionMatrix = glm::ortho(
+        0.f, static_cast<float>(g_windowSize.x), 0.f, static_cast<float>(g_windowSize.y), -100.f, 100.f);
+
+    pDefaultShaderProgram->setMatrix4("projectionMat", projectionMatrix);
+
     while (!glfwWindowShouldClose(pWindow))
     {
       glClear(GL_COLOR_BUFFER_BIT);
 
-      // glUseProgram(shader_program);
       pDefaultShaderProgram->use();
       glBindVertexArray(vao);
       tex->bind();
+
+      pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_1);
       glDrawArrays(GL_TRIANGLES, 0, 3);
 
-      /* Swap front and back buffers */
+      pDefaultShaderProgram->setMatrix4("modelMat", modelMatrix_2);
+      glDrawArrays(GL_TRIANGLES, 0, 3);
+
       glfwSwapBuffers(pWindow);
-      /* Poll for and process events */
       glfwPollEvents();
     }
-
   }
 
   glfwTerminate();
