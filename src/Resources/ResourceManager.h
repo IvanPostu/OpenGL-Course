@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include <string>
 #include <memory>
 #include <map>
@@ -36,9 +37,16 @@ public:
                                               const std::string& textureName,
                                               const std::string& shaderName,
                                               const unsigned int spriteHeight,
-                                              const unsigned int spriteWidth);
+                                              const unsigned int spriteWidth,
+                                              const std::string& subTextureName = "default");
 
   std::shared_ptr<Renderer::Sprite> getSprite(const std::string &spriteName);
+
+  std::shared_ptr<Renderer::Texture2D> loadTextureAtlas(const std::string textureName,
+                                                        const std::string texturePath,
+                                                        const std::vector<std::string> subTextures,
+                                                        const unsigned int subTextureWidth,
+                                                        const unsigned int subTextureHeight);
 
 private:
   std::string getFileString(const std::string &relativePath) const;
