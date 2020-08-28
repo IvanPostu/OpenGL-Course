@@ -32,7 +32,7 @@ void Game::render()
   {
     m_pTank->render();
   }
-  // ResourceManager::getAnimatedSprite("NewAnimatedSprite")->render();
+  ResourceManager::getAnimatedSprite("NewAnimatedSprite")->render();
 }
 
 void Game::update(const uint64_t delta)
@@ -65,12 +65,10 @@ void Game::update(const uint64_t delta)
       m_pTank->move(false);
     }
 
-
-
-
     m_pTank->update(delta);
   }
-  // ResourceManager::getAnimatedSprite("NewAnimatedSprite")->update(delta);
+
+  ResourceManager::getAnimatedSprite("NewAnimatedSprite")->update(delta);
 }
 
 void Game::setKey(const int key, const int action)
