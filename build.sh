@@ -36,7 +36,8 @@ if [ "$flag1" = '--init' ]; then
   rm -rf ./build
   mkdir -p ./build
   cd ./build
-  cmake ..
+
+  mkdir -p Debug Release
 
   exit 0
 fi
@@ -46,7 +47,7 @@ if [ "$flag1" = '--release' ]; then
   echo  "${cyan}Build project in RELEASE mode.${reset}"
   cd ./build
   # cmake --build . --config Release
-  cmake -DCMAKE_BUILD_TYPE=Release .
+  cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release .
   make
 
   exit 0
@@ -55,9 +56,9 @@ fi
 if [ "$flag1" = '--debug' ]; then
 
   echo  "${cyan}Build project in DEBUG mode.${reset}"
-  cd ./build
-  cmake -DCMAKE_BUILD_TYPE=Debug .
-  make
+  cd ./build/Debug
+  cmake ../.. -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Debug
+  cmake --build .
 
   exit 0
 fi
