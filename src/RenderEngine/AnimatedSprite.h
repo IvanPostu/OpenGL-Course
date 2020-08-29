@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 
-namespace Renderer
+namespace RenderEngine
 {
 
   class AnimatedSprite : public Sprite
@@ -35,4 +35,4 @@ namespace Renderer
     mutable bool m_dirty = false;
   };
 
-} // namespace Renderer
+} // namespace RenderEngine

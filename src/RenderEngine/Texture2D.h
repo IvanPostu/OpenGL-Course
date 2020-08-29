@@ -6,7 +6,7 @@
 #include <string>
 #include <map>
 
-namespace Renderer
+namespace RenderEngine
 {
   class Texture2D
   {
@@ -58,4 +58,4 @@ namespace Renderer
 
     std::map<std::string, SubTexture2D> m_subTextures;
   };
-} // namespace Renderer
+} // namespace RenderEngine

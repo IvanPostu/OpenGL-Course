@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-namespace Renderer
+namespace RenderEngine
 {
   AnimatedSprite::AnimatedSprite(std::shared_ptr<Texture2D> pTexture,
                                  std::string initialSubTexture,
@@ -85,4 +85,4 @@ namespace Renderer
     Sprite::render();
   }
 
-} // namespace Renderer
+} // namespace RenderEngine

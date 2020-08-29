@@ -1,6 +1,6 @@
 #include "Texture2D.h"
 
-namespace Renderer
+namespace RenderEngine
 {
 
   Texture2D::Texture2D(const GLuint width, const GLuint height,
@@ -88,4 +88,4 @@ namespace Renderer
     return defaultSubTexture;
   }
 
-} // namespace Renderer
+} // namespace RenderEngine

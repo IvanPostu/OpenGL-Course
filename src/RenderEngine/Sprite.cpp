@@ -1,11 +1,12 @@
 #include "Sprite.h"
 #include "ShaderProgram.h"
 #include "Texture2D.h"
+#include "Renderer.h"
 
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-namespace Renderer
+namespace RenderEngine
 {
   Sprite::Sprite(std::shared_ptr<Texture2D> pTexture,
                  std::string initialSubTexture,
@@ -59,7 +60,7 @@ namespace Renderer
     textureCoordsLayout.addElementLayoutFloat(2, false);
     m_vertexArray.addBuffer(m_textureCoordsBuffer, textureCoordsLayout);
 
-    m_indexBuffer.init(indicies, 6 * sizeof(GLuint));
+    m_indexBuffer.init(indicies, 6 );
     m_vertexArray.unbind();
     m_indexBuffer.unbind();
   }
@@ -79,14 +80,12 @@ namespace Renderer
     model = glm::translate(model, glm::vec3(-0.5f * m_size.x, -0.5f * m_size.y, 0.f));
     model = glm::scale(model, glm::vec3(m_size, 1.f));
     
-    m_vertexArray.bind();
     m_pShaderProgram->setMatrix4("modelMat", model);
 
     glActiveTexture(GL_TEXTURE0);
     m_pTexture->bind();
 
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-    m_vertexArray.bind();
+    Renderer::draw(m_vertexArray, m_indexBuffer, *m_pShaderProgram);
   }
 
   void Sprite::setPosition(const glm::vec2 &position)
@@ -104,4 +103,4 @@ namespace Renderer
     m_rotation = rotation;
   }
 
-} // namespace Renderer
+} // namespace RenderEngine

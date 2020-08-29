@@ -16,22 +16,24 @@ add_executable(${PROJECT_NAME}
   src/Resources/ResourceManager.cpp
   src/Resources/ResourceManager.h
 
-  src/Renderer/ShaderProgram.cpp 
-  src/Renderer/ShaderProgram.h 
-  src/Renderer/Texture2D.cpp
-  src/Renderer/Texture2D.h
-  src/Renderer/Sprite.cpp
-  src/Renderer/Sprite.h
-  src/Renderer/AnimatedSprite.cpp
-  src/Renderer/AnimatedSprite.h
-  src/Renderer/VertexBuffer.cpp
-  src/Renderer/VertexBuffer.h
-  src/Renderer/IndexBuffer.cpp
-  src/Renderer/IndexBuffer.h
-  src/Renderer/VertexArray.cpp
-  src/Renderer/VertexArray.h
-  src/Renderer/VertexBufferLayout.cpp
-  src/Renderer/VertexBufferLayout.h
+  src/RenderEngine/ShaderProgram.cpp 
+  src/RenderEngine/ShaderProgram.h 
+  src/RenderEngine/Texture2D.cpp
+  src/RenderEngine/Texture2D.h
+  src/RenderEngine/Sprite.cpp
+  src/RenderEngine/Sprite.h
+  src/RenderEngine/AnimatedSprite.cpp
+  src/RenderEngine/AnimatedSprite.h
+  src/RenderEngine/VertexBuffer.cpp
+  src/RenderEngine/VertexBuffer.h
+  src/RenderEngine/IndexBuffer.cpp
+  src/RenderEngine/IndexBuffer.h
+  src/RenderEngine/VertexArray.cpp
+  src/RenderEngine/VertexArray.h
+  src/RenderEngine/VertexBufferLayout.cpp
+  src/RenderEngine/VertexBufferLayout.h
+  src/RenderEngine/Renderer.cpp
+  src/RenderEngine/Renderer.h
 
   src/Game/Game.cpp
   src/Game/Game.h

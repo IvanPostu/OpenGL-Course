@@ -3,7 +3,7 @@
 #include <glfw/glfw3.h>
 #include <vector>
 
-namespace Renderer
+namespace RenderEngine
 {
   struct BufferLayoutElement
   {

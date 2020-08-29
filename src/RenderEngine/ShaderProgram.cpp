@@ -4,7 +4,7 @@
 
 #include <iostream>
 
-namespace Renderer
+namespace RenderEngine
 {
 
   ShaderProgram::ShaderProgram(const string &vertexShader, const string &fragmentShader)
@@ -110,4 +110,4 @@ namespace Renderer
     glUniformMatrix4fv(glGetUniformLocation(m_ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
   }
 
-} // namespace Renderer
+} // namespace RenderEngine

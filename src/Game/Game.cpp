@@ -1,11 +1,11 @@
 
 #include "Game.h"
 #include "../Resources/ResourceManager.h"
-#include "../Renderer/ShaderProgram.h"
+#include "../RenderEngine/ShaderProgram.h"
 #include "../Resources/ResourceManager.h"
-#include "../Renderer/Texture2D.h"
-#include "../Renderer/Sprite.h"
-#include "../Renderer/AnimatedSprite.h"
+#include "../RenderEngine/Texture2D.h"
+#include "../RenderEngine/Sprite.h"
+#include "../RenderEngine/AnimatedSprite.h"
 
 #include "Tank.h"
 
